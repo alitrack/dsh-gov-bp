@@ -1,0 +1,45 @@
+{
+  "name": "dsh-gov-bp",
+  "version": "0.1.0",
+  "description": "Government-facing BP (试点申报 / 项目建议书) skills for DeepSeekRuntime (dsh): review, nine-chapter outline, bid-language conversion and quoting with CSBMK person-month math. Zero dependencies.",
+  "type": "module",
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "assets",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-skill": "0.2.1-rc.2"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alitrack/dsh-gov-bp.git"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-skill",
+    "dsh-plugin",
+    "government",
+    "business-plan",
+    "proposal",
+    "pricing",
+    "china"
+  ]
+}

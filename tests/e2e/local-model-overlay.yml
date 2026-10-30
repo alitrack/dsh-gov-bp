@@ -1,0 +1,23 @@
+# Local-model overlay for the full headless e2e.
+#
+# Points the agent at a local OpenAI-compatible endpoint through the pi-ai
+# adapter (the deepseek adapter only speaks the Anthropic Messages protocol),
+# so the whole loop runs without an API key. apiKeyEnv must resolve even for a
+# local model; the value is arbitrary.
+- id: agent-default-model
+  config:
+    provider: local-qwen
+    model: qwen3.8-27b
+- id: llm-pi-ai
+  config:
+    providers:
+      local-qwen:
+        displayName: Local Qwen (OpenAI-compatible)
+        apiKeyEnv: LOCAL_QWEN_API_KEY
+        api: openai-completions
+        baseURL: http://10.10.10.115:8014/v1
+        models:
+          - id: qwen3.8-27b
+            name: Qwen3.8 27B
+            contextWindow: 262144
+            maxTokens: 32768

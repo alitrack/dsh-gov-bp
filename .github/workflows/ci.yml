@@ -1,0 +1,35 @@
+# CI for dsh-gov-bp.
+#
+# The skills are plain Markdown served by a zero-dependency provider, so CI is
+# cheap: frontmatter/contract tests plus the key-free e2e. The version matrix
+# exists because the plugin declares a peer dependency on
+# `@deepseek-ai/dsh-skill` — a release that changes the provider contract
+# breaks this job loudly instead of degrading for users.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20, 22]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install peer dependency
+        run: npm install --no-save @deepseek-ai/dsh-skill@0.2.1-rc.2
+
+      - name: Unit tests
+        run: node --test
+
+      - name: Key-free e2e
+        run: node tests/e2e/keyless.mjs

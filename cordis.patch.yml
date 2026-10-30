@@ -1,0 +1,4 @@
+# The dsh-gov-bp bundle patch: mounts the skill provider over the skills registry.
+- insert:
+    - id: dsh-gov-bp
+      name: dsh-gov-bp

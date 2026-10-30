@@ -1,0 +1,7 @@
+# Build artifacts
+node_modules/
+*.log
+
+# Local development overlay (contains an absolute machine path). Root only —
+# tests/e2e/local-overlay.yml is a committed fixture.
+/local-overlay.yml

@@ -1,0 +1,5 @@
+# Local development overlay: mounts this checkout's skill provider.
+# Paths must be absolute; adjust to your own checkout.
+- insert:
+    - id: dsh-gov-bp
+      name: '/mnt/d/wsl2/dsh-gov-bp/lib/index.js'
